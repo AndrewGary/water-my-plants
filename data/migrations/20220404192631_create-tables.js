@@ -16,6 +16,7 @@ exports.up = function(knex) {
           plants.string('nickname', 255).notNullable().unique();
           plants.string('species', 255).notNullable();
           plants.integer('h2oFrequency').notNullable();
+          plants.integer('user_id').notNullable();
       })
   )
 };
