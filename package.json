@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/AndrewGary/water-my-plants#readme",
   "devDependencies": {
+    "express": "^4.17.3",
     "knex": "^1.0.4",
     "sqlite3": "^5.0.2"
   },
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.8",
     "jest": "^27.5.1",
     "supertest": "^6.2.2"
   }
