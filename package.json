@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/AndrewGary/water-my-plants/issues"
   },
-  "homepage": "https://github.com/AndrewGary/water-my-plants#readme"
+  "homepage": "https://github.com/AndrewGary/water-my-plants#readme",
+  "devDependencies": {
+    "knex": "^1.0.4",
+    "sqlite3": "^5.0.2"
+  },
+  "dependencies": {
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
+  }
 }
