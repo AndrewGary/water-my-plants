@@ -5,10 +5,12 @@ server.use(express.json());
 
 const UserRouter = require('./users/user-router');
 const PlantsRouter = require('./plants/plant-router');
+const AuthRouter = require('./auth/auth-router');
 
 
 server.use('/api/users', UserRouter)
 server.use('/api/plants', PlantsRouter)
+server.use('/api/auth', AuthRouter);
 
 
 

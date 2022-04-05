@@ -18,11 +18,18 @@ const findById = id => {
 }
 
 const add = async user => {
-    const { username, password, phoneNumber } = user;
-    await db.transaction(async trx => {
-        const [user_id] = await trx('users').insert({ username, password, phoneNumber });
-    })
-    return findById(user_id);
+    // await db.transaction(async trx => {
+    //     const [user_id] = await trx('users').insert({ username, password, phoneNumber });
+    //     // const user_id = 2
+    //     // const result = await trx('users').insert({ username, password, phoneNumber });
+    // })
+    // const [user_id] = await db('users').insert({ username: username, password: password, phoneNumber: phoneNumber})
+    
+    // return findById(user_id);
+
+    const [user_id] = await db('users').insert(user);
+
+    return findById(user_id)
 }
 
 module.exports = {

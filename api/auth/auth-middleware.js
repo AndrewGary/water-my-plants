@@ -14,3 +14,27 @@ const checkUsernameExists = async (req, res, next) => {
         next(error);
     }
 }
+
+const validateUsernameAndPhone = async (req, res, next) => {
+    try{
+        let test = await Users.findBy({ username: req.body.username })
+
+        if(test.length){
+            next({ status: 400, message: 'Username already exists'})
+        }
+
+        test = await Users.findBy({ phoneNumber: req.body.phoneNumber })
+        if(test.length){
+            next({ status: 400, message: 'Phone number already being used'})
+        }
+        next();
+    }catch(error){
+        next(error);
+    }
+}
+
+
+module.exports = {
+    checkUsernameExists,
+    validateUsernameAndPhone
+}
