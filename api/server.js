@@ -1,4 +1,5 @@
 const express = require('express');
+const { restricted } = require('./auth/auth-middleware');
 
 const server = express();
 server.use(express.json());
@@ -9,7 +10,7 @@ const AuthRouter = require('./auth/auth-router');
 
 
 server.use('/api/users', UserRouter)
-server.use('/api/plants', PlantsRouter)
+server.use('/api/plants', restricted, PlantsRouter)
 server.use('/api/auth', AuthRouter);
 
 

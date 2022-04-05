@@ -12,7 +12,7 @@ exports.up = function(knex) {
       })
 
       .createTable('plants', plants => {
-          plants.increments('plants_id');
+          plants.increments('plant_id');
           plants.string('nickname', 255).notNullable().unique();
           plants.string('species', 255).notNullable();
           plants.integer('h2oFrequency').notNullable();

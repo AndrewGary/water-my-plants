@@ -14,11 +14,32 @@ const findByUserId = userId => {
         .where('user_id', userId)
 }
 
+const add = async plant => {
+    const [plant_id] = await db('plants').insert(plant)
+
+    return findBy({ plant_id: plant_id})
+}
+
+const update = (id, changes) => {
+    return db('plants')
+        .where('plant_id', id)
+        .update(changes, '*');
+}
+
+const remove = id => {
+    return db('plants')
+        .where('plant_id', id)
+        .del();
+}
+
 
 
 
 module.exports = {
     findBy,
     find,
-    findByUserId
+    findByUserId,
+    add,
+    update,
+    remove,
 }

@@ -32,9 +32,16 @@ const add = async user => {
     return findById(user_id)
 }
 
+const updateUser = (id, changes) => {
+    return db('users')
+        .where('user_id', id)
+        .update(changes, '*');
+}
+
 module.exports = {
     find,
     findBy,
     findById,
-    add
+    add,
+    updateUser
 }

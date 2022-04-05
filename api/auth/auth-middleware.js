@@ -1,4 +1,6 @@
 const Users = require('../users/users-model');
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../secrets')
 
 const checkUsernameExists = async (req, res, next) => {
     try{
@@ -33,8 +35,25 @@ const validateUsernameAndPhone = async (req, res, next) => {
     }
 }
 
+const restricted = (req, res, next) => {
+    const token = req.headers.authorization;
+    if(!token){
+        next({ status: 401, message: 'Token required' })
+    }else{
+        jwt.verify(token, JWT_SECRET, (error, decodedToken) => {
+            if(error){
+                next({ status: 401, message: 'Invalid token'})
+            }else{
+                req.decodedToken = decodedToken;
+                next();
+            }
+        })
+    }
+}
 
 module.exports = {
     checkUsernameExists,
-    validateUsernameAndPhone
+    validateUsernameAndPhone,
+    restricted,
+
 }
