@@ -4,7 +4,8 @@ const path = require('path');
 
 const server = express();
 server.use(express.json());
-server.use(express.static(path.join(__dirname, 'client/build')))
+console.log(__dirname);
+server.use(express.static(path.join('C:/Users/andre/OneDrive/Desktop/lambdaAssignments/Unit4/BuildWeek/water-my-plants', 'client/build')))
 
 const UserRouter = require('./users/user-router');
 const PlantsRouter = require('./plants/plant-router');
