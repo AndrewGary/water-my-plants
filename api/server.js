@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const { restricted } = require('./auth/auth-middleware');
 
@@ -14,6 +13,9 @@ server.use('/api/users', UserRouter)
 server.use('/api/plants', restricted, PlantsRouter)
 server.use('/api/auth', AuthRouter);
 
+server.get('/', (req, res, next) => {
+    res.status(200).json({ message: 'hello' })
+})
 
 
 server.use((err, req, res, next) => {
