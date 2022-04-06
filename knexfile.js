@@ -14,5 +14,13 @@ module.exports = {
   testing: {
     ...sharedConfig,
     connection: { filename: './data/test.db3'}
+  },
+  production: {
+    ...sharedConfig,
+    connection: { filename: './data/water-my-plants.db3'},
+    pool: {
+      min: 2,
+      max: 10
+    }
   }
 }
