@@ -8,7 +8,8 @@
     "server": "nodemon index.js",
     "start": "node index.js",
     "migrate": "npx knex migrate:latest",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "push": "git add . && git commit -m 'WIP' && git push"
   },
   "repository": {
     "type": "git",
