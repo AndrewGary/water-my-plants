@@ -10,7 +10,7 @@
     "migrate": "npx knex migrate:latest",
     "seed": "npx knex seed:run",
     "push": "git add . && git commit -m 'WIP' && git push",
-    "heroku-postbuild": "cd water-plants-frontend && npm i && npm run build"
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "repository": {
     "type": "git",
