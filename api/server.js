@@ -1,8 +1,13 @@
 const express = require('express');
 const { restricted } = require('./auth/auth-middleware');
+const cors = require('cors');
 
 const server = express();
 server.use(express.json());
+server.use(cors({
+    origin: '*',
+    methods: ['POST', 'GET']
+}));
 
 const UserRouter = require('./users/user-router');
 const PlantsRouter = require('./plants/plant-router');

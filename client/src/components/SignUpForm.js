@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+
 // import * as yup from "yup";
 const initialValues = {
   username: "",
@@ -16,13 +18,28 @@ function Register() {
       [event.target.name]: event.target.value,
     });
   };
+
+  const handleSubmit = e => {
+    console.log('connected');
+    e.preventDefault();
+
+    axios.post('http://localhost:9000/api/auth/register', formValues)
+    .then(resp => {
+      console.log('resp: ', resp);
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
+
+
   return (
     <div className="register-wrapper">
       <h2>
         Get reminded when it’s time to feed that foliage and quench your plant’s
         thirst.
       </h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="inputContainer">
           <div className="inputContainer">
             <label htmlFor="username">Username:</label>
@@ -53,7 +70,6 @@ function Register() {
               name="phoneNumber"
               type="tel"
               placeholder="9151234566"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               value={formValues.phoneNumber}
               onChange={onChange}
             ></input>
