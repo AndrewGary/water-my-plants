@@ -9,6 +9,11 @@ server.use(express.static(path.join('C:/Users/andre/OneDrive/Desktop/lambdaAssig
 
 const PORT = process.env.PORT || 9000;
 
+server.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+    // res.status(200).json({ message: 'help'})
+})
+
 server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 })
