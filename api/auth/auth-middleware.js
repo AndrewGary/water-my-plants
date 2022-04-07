@@ -63,7 +63,8 @@ const validateUsernameAndPhone = async (req, res, next) => {
         }
         next();
     }catch(error){
-        next(error);
+        console.log(`the error is ${error}`)
+        next({ status: 400, message: 'Does this work??'});
     }
 }
 

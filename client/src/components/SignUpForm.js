@@ -25,10 +25,12 @@ function Register() {
 
     axios.post('http://localhost:9000/api/auth/register', formValues)
     .then(resp => {
+      console.log('inside of then');
       console.log('resp: ', resp);
     })
     .catch(error => {
-      console.log(error.message);
+      console.log('inside of catch')
+      console.log(error);
     })
   }
 
@@ -68,7 +70,7 @@ function Register() {
             <input
               id="phoneNumber"
               name="phoneNumber"
-              type="tel"
+              type="input"
               placeholder="9151234566"
               value={formValues.phoneNumber}
               onChange={onChange}
