@@ -1,12 +1,10 @@
 const express = require('express');
 const Plants = require('./plants-model');
-
+const { validateChanges } = require('./plants-middleware');
 
 const router = express.Router();
 
-
 router.get('/', (req, res, next) => {
-    console.log(req.decodedToken)
     Plants.find()
     .then(plants => {
         res.status(200).json(plants);
@@ -26,7 +24,7 @@ router.get('/users/:user_id', (req, res, next) => {
     })
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', validateChanges, (req, res, next) => {
     const changes = req.body;
 
     Plants.update(req.params.id, changes)
@@ -60,4 +58,5 @@ router.delete('/:id', async (req, res, next) => {
         res.status(200).json({ message: `${plant[0].nickname} has been removed`})
     })
 })
+
 module.exports = router;

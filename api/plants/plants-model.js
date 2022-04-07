@@ -32,9 +32,6 @@ const remove = id => {
         .del();
 }
 
-
-
-
 module.exports = {
     findBy,
     find,
