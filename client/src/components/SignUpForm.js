@@ -29,8 +29,9 @@ function Register() {
       console.log('resp: ', resp);
     })
     .catch(error => {
-      console.log(error.response);
-      setErrorMessage(error.response.data.message);
+      console.log('error: ', error)
+      console.log('error.message: ', error.message)
+      setErrorMessage(error);
     })
   }
 
