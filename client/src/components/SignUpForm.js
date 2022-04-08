@@ -10,6 +10,7 @@ const initialValues = {
 
 function Register() {
   const [formValues, setFormValues] = useState(initialValues);
+  const [ errorMessage, setErrorMessage ] = useState('');
 
   const onChange = (event) => {
     console.log(formValues);
@@ -20,7 +21,6 @@ function Register() {
   };
 
   const handleSubmit = e => {
-    console.log('connected');
     e.preventDefault();
 
     axios.post('http://localhost:9000/api/auth/register', formValues)
@@ -29,8 +29,7 @@ function Register() {
       console.log('resp: ', resp);
     })
     .catch(error => {
-      console.log('inside of catch')
-      console.log(error);
+      setErrorMessage(error.response.data.message);
     })
   }
 
@@ -44,6 +43,7 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <div className="inputContainer">
           <div className="inputContainer">
+            <h3 className="errorMessage">{errorMessage ? `ERROR: ${errorMessage}` : '' }</h3>
             <label htmlFor="username">Username:</label>
             <input
               id="username"
