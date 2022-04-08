@@ -23,7 +23,7 @@ function Register() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    axios.post('http://localhost:9000/api/auth/register', formValues)
+    axios.post('https://water-my-plants004.herokuapp.com/api/auth/register', formValues)
     .then(resp => {
       console.log('inside of then');
       console.log('resp: ', resp);
