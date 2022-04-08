@@ -32,7 +32,7 @@ function Register() {
       console.log('error: ', error)
       console.log('error.message: ', error.message)
       console.log('error.response: ', error.response);
-      setErrorMessage(error.message);
+      setErrorMessage(error.response.data.message);
     })
   }
 
