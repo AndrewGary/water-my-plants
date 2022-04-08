@@ -29,6 +29,7 @@ function Register() {
       console.log('resp: ', resp);
     })
     .catch(error => {
+      console.log(error.response);
       setErrorMessage(error.response.data.message);
     })
   }
