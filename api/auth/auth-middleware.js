@@ -19,7 +19,7 @@ const checkUsernameExists = async (req, res, next) => {
 
 const validateBodyValuesForRegister = (req, res, next) => {
 
-    if(!req.body.username || !req.body.password || !req.body.username){
+    if(!req.body.username || !req.body.password || !req.body.phoneNumber){
         res.status(400).json({ message: 'You must include a username, password, and phone number.' });
     }else{
         next();
@@ -69,7 +69,7 @@ const validateUsernameAndPhone = async (req, res, next) => {
 }
 
 const validateLoginBody = (req, res, next) => {
-    if(req.body.password || !req.body.username){
+    if(!req.body.password || !req.body.username){
         next({ status: 401, message: 'Username and Password required.'})
     }else{
         next();
