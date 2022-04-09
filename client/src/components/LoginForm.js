@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const LoginForm = props => {
 
     return(
-        <div></div>
+        <div>Login form</div>
     )
 
 }

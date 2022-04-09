@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import {  } from 'react-router-dom';
 
 // import * as yup from "yup";
 const initialValues = {
@@ -11,6 +12,11 @@ const initialValues = {
 function Register() {
   const [formValues, setFormValues] = useState(initialValues);
   const [ errorMessage, setErrorMessage ] = useState('');
+  const navigate = useNavigate();
+
+  const redirectToLogin = () => {
+    navigate('/login')
+  }
 
   const onChange = (event) => {
     console.log(formValues);
@@ -25,13 +31,12 @@ function Register() {
 
     axios.post('https://water-my-plants004.herokuapp.com/api/auth/register', formValues)
     .then(resp => {
-      console.log('inside of then');
-      console.log('resp: ', resp);
+      redirectToLogin();
     })
     .catch(error => {
-      console.log('error: ', error)
-      console.log('error.message: ', error.message)
-      console.log('error.response: ', error.response);
+      // console.log('error: ', error)
+      // console.log('error.message: ', error.message)
+      // console.log('error.response: ', error.response);
       setErrorMessage(error.response.data.message);
     })
   }
